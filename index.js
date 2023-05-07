@@ -24,3 +24,20 @@ function getFollowers(screenName) {
         });
     });
 }
+
+// Fetch the user's friends (people they follow)
+function getFriends(screenName) {
+    return new Promise((resolve, reject) => {
+        T.get('friends/list', { screen_name: screenName }, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                const friends = data.users.map((user) => ({
+                    id: user.id,
+                    screen_name: user.screen_name,
+                }));
+                resolve(friends);
+            }
+        });
+    });
+}
