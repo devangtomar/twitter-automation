@@ -41,3 +41,19 @@ function getFriends(screenName) {
         });
     });
 }
+
+// Compare followers and friends to find users who don't follow back
+async function getUsersNotFollowingBack(screenName) {
+    try {
+        const followers = await getFollowers(screenName);
+        const friends = await getFriends(screenName);
+
+        const usersNotFollowingBack = friends.filter(
+            (friend) => !followers.some((follower) => follower.id === friend.id)
+        );
+
+        return usersNotFollowingBack;
+    } catch (err) {
+        throw new Error('Failed to fetch users.');
+    }
+}
