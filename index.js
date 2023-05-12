@@ -57,3 +57,19 @@ async function getUsersNotFollowingBack(screenName) {
         throw new Error('Failed to fetch users.');
     }
 }
+
+// Unfollow users who don't follow back
+async function unfollowUsersNotFollowingBack(screenName) {
+    try {
+        const usersNotFollowingBack = await getUsersNotFollowingBack(screenName);
+
+        for (const user of usersNotFollowingBack) {
+            await unfollowUser(user.id);
+            console.log(`Unfollowed ${user.screen_name}`);
+        }
+
+        console.log('Unfollow process completed.');
+    } catch (err) {
+        console.error('Error:', err.message);
+    }
+}
