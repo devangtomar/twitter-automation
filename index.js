@@ -58,6 +58,19 @@ async function getUsersNotFollowingBack(screenName) {
     }
 }
 
+// Unfollow a user by their ID
+function unfollowUser(userId) {
+    return new Promise((resolve, reject) => {
+        T.post('friendships/destroy', { user_id: userId }, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
 // Unfollow users who don't follow back
 async function unfollowUsersNotFollowingBack(screenName) {
     try {
@@ -73,3 +86,8 @@ async function unfollowUsersNotFollowingBack(screenName) {
         console.error('Error:', err.message);
     }
 }
+
+// Usage
+const myTwitterScreenName = 'YOUR_TWITTER_SCREEN_NAME';
+
+unfollowUsersNotFollowingBack(myTwitterScreenName);
