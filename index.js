@@ -1,11 +1,12 @@
 const Twit = require('twit');
+require('dotenv').config();
 
 // Set up your Twitter API credentials
 const T = new Twit({
-    consumer_key: 'YOUR_CONSUMER_KEY',
-    consumer_secret: 'YOUR_CONSUMER_SECRET',
-    access_token: 'YOUR_ACCESS_TOKEN',
-    access_token_secret: 'YOUR_ACCESS_TOKEN_SECRET',
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token: process.env.ACCESS_TOKEN,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 });
 
 // Fetch the user's followers
@@ -88,6 +89,6 @@ async function unfollowUsersNotFollowingBack(screenName) {
 }
 
 // Usage
-const myTwitterScreenName = 'YOUR_TWITTER_SCREEN_NAME';
+const myTwitterScreenName = process.env.TWITTER_SCREEN_NAME;
 
 unfollowUsersNotFollowingBack(myTwitterScreenName);

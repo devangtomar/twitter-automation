@@ -10,5 +10,9 @@
     "twitter"
   ],
   "author": "Devang Tomar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "twit": "^2.2.11"
+  }
 }
