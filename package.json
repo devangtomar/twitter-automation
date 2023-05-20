@@ -1,0 +1,14 @@
+{
+  "name": "twitter-automation",
+  "version": "1.0.0",
+  "description": "Fetches users who don't follow you back and then unfollows them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "twitter"
+  ],
+  "author": "Devang Tomar",
+  "license": "ISC"
+}
